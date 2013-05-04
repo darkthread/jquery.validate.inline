@@ -26,12 +26,16 @@ to upgrade when validationEngine release new version.  The only disadvantage is 
 It's very simple to use jquery.validate.inline.
 
 The original display
+
 ![Screenshot](https://raw.github.com/darkthread/jquery.validate.inline/master/doc/new-mvc-validation-style.gif)
 
-Add one line:
+Include jquery.validate.inline.js and validationEngine.jquery.css in your webpage, and add a line:
+``` html
 $("form").makeValidationInline();
+```
 
 The new display
+
 ![Screenshot](https://raw.github.com/darkthread/jquery.validate.inline/master/doc/new-mvc-validation-style.gif)
 
 #### DEMO
