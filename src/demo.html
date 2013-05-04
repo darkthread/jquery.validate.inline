@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>jquery.validate.inline demo</title>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.js "></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.js"></script>
+    <script src="Scripts/jquery.validate.inline.js"></script>
+    <link href="Content/validationEngine.jquery.css" rel="stylesheet" />
+    <style type="text/css">
+        body, input {
+            font-size: 9pt;
+        }
+        input {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="Change Layout" id="btnToggle" />
+    <div>
+        <div style="width: 50px; height: 200px; background-color: #ff6a00; float: left" id="block"></div>
+        <div style="margin-top: 40px;">
+            <form id="form1">
+                <div>
+                    <input type="text" id="tReq" name="tReq" data-val="true"
+                        data-val-required="Please input something" />
+                </div>
+                <div>
+                    <input type="text" id="Text1" name="Text1" data-val="true"
+                        data-val-required="Required"
+                        data-prompt-position="bottomRight: -20,2" />
+                </div>
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $("#btnToggle").click(function () {
+                $("#block").toggle();
+                $("#form1").trigger("updatePromptsPosition");
+            });
+            $("#form1").submit(function () {
+                return false;
+            }).makeValidationInline();
+        });
+    </script>
+</body>
+</html>
