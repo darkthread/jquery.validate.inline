@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>jquery.validate.inline demo</title>
@@ -24,11 +24,11 @@
         <div style="margin-top: 40px;">
             <form id="form1">
                 <div>
-                    <input type="text" id="tReq" name="tReq" data-val="true"
+                    <input type="text" id="Text1" name="Text1" data-val="true"
                         data-val-required="Please input something" />
                 </div>
                 <div>
-                    <input type="text" id="Text1" name="Text1" data-val="true"
+                    <input type="text" id="Text2" name="Text2" data-val="true"
                         data-val-required="Required"
                         data-prompt-position="bottomRight: -20,2" />
                 </div>
@@ -38,13 +38,24 @@
     </div>
     <script>
         $(function () {
+            //toggle the div to alter the page layout, making prompt position offets
             $("#btnToggle").click(function () {
                 $("#block").toggle();
+                //layout changed so we need to update the prompts' position
                 $("#form1").trigger("updatePromptsPosition");
             });
-            $("#form1").submit(function () {
-                return false;
-            }).makeValidationInline();
+            $("#form1")
+            //set inline style validation messages
+            .makeValidationInline()
+            //add a submit event to prevent real submit
+            .on("submit", function (e) {
+                var $form = $(this);
+                $form.validate();
+                if ($(this).valid()) {
+                    alert("Imagine the form is submitted...");
+                }
+                e.preventDefault();
+            });
         });
     </script>
 </body>

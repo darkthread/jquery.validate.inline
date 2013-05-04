@@ -2095,7 +2095,7 @@ by Jeffrey Lee, 2013
         }
         function custSuccess(error, inputElement) {
             $.validationEngine.methods.hide.call(inputElement);
-            inputElement.removeAttr(promptStatusFlag);
+            $(inputElement).removeAttr(promptStatusFlag);
         }
         function updatePromptsPosition() {
             var $form = $(this);
